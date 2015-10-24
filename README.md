@@ -28,7 +28,7 @@ class Person extends Datumo.Model {
     }
   }
 
-static get propertySets () {
+  static get propertySets () {
     return {
       name: ['givenName', 'middleName', 'familyName'],
       email: ['email']
