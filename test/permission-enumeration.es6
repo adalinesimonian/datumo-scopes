@@ -50,13 +50,13 @@ describe('Permission enumeration', () => {
       it('should enumerate all permissions implied by the scope and action', () => {
         let Person = testModels.createPersonModel()
         let personScopes = new DatumoScopes(Person)
-        let permissions = personScopes.getPermissions('person-read-overview', 'read')
+        let permissions = personScopes.getPermissions('person-read-all', 'read')
 
         expect(permissions).to.have.length(1)
         expect(permissions).to.deep.have.members([
           {
             action: 'read',
-            properties: ['givenName', 'middleName', 'familyName']
+            properties: ['givenName', 'middleName', 'familyName', 'email', 'phone']
           }
         ])
       })
