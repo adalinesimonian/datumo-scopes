@@ -62,7 +62,21 @@ export default class DatumoScopes {
       throw new Error('Property sets not defined on model')
     }
     let permissions = []
-    let propertySets = Object.keys(this[model_].propertySets)
+    let propertySets = Object.keys(this[model_].propertySets).map(setName => {
+      let propertySetDefinition = this[model_].propertySets[setName]
+      let properties
+      if (propertySetDefinition === '*') {
+        properties = Object.keys(this[model_].schema)
+      } else if (Array.isArray(propertySetDefinition)) {
+        properties = propertySetDefinition
+      } else {
+        throw new Error(
+          `Invalid property set ${setName}. Must be an array of properties, ` +
+          `or '*'`
+        )
+      }
+      return { name: setName, properties: properties }
+    })
     scopes.forEach(scope => {
       let scopeParts = scope.split('-')
       if (scopeParts.length < 3) { return }
@@ -70,10 +84,11 @@ export default class DatumoScopes {
       if (actions.indexOf(scopeParts[1]) === -1) { return }
       if (action && scopeParts[1] !== action) { return }
       let setName = scope.substr(scopeParts[0].length + scopeParts[1].length + 2)
-      if (propertySets.find(propertySet => propertySet === setName)) {
+      let propertySet = propertySets.find(ps => ps.name === setName)
+      if (propertySet) {
         let permission = permissions.find(p => p.action === scopeParts[1])
         if (permission) {
-          this[model_].propertySets[setName].forEach(property => {
+          propertySet.properties.forEach(property => {
             if (permission.properties.indexOf(property) === -1) {
               permission.properties.push(property)
             }
@@ -81,7 +96,7 @@ export default class DatumoScopes {
         } else {
           permissions.push({
             action: scopeParts[1],
-            properties: this[model_].propertySets[setName]
+            properties: propertySet.properties
           })
         }
       }
