@@ -31,6 +31,7 @@ function createPersonModel () {
 
     static get propertySets () {
       return {
+        all: '*',
         overview: ['givenName', 'middleName', 'familyName'],
         email: ['email']
       }
