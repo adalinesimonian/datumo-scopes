@@ -1,0 +1,6 @@
+.vscode
+node_modules
+lib/*
+!lib/README.md
+docs/_build
+docs/_build_html
