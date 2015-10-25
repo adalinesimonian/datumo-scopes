@@ -5,6 +5,8 @@
 datumo-scopes is an opinionated library that helps you control access to data on
 [Datumo][datumo] models on a per-property basis using scopes.
 
+## [What is datumo-scopes?][docs-about]
+
 ## Example Usage
 
 **Datumo requires Node.js 4.0 or later.**
@@ -75,3 +77,4 @@ server.get('/person/:id', (req, res, next) => {
 MIT
 
 [datumo]: https://github.com/vsimonian/datumo
+[docs-about]: http://datumo-scopes.readthedocs.org/en/latest/about.html
