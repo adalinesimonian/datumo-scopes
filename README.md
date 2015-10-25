@@ -34,10 +34,10 @@ class Person extends Datumo.Model {
       email: ['email']
     }
   }
-}
 
-static getByID (id) {
-  // ...
+  static getByID (id) {
+    // ...
+  }
 }
 
 let personScopes = new DatumoScopes(Person)
