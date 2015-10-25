@@ -169,6 +169,5 @@ Reference
   // {
   //   givenName: 'Patricia',
   //   middleName: 'Girard',
-  //   familyName: 'Couturier',
-  //   email: 'pcouturier@example.com'
+  //   familyName: 'Couturier'
   // }
