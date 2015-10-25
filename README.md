@@ -7,6 +7,8 @@ datumo-scopes is an opinionated library that helps you control access to data on
 
 ## [What is datumo-scopes?][docs-about]
 
+## [Documentation][docs]
+
 ## Example Usage
 
 **Datumo requires Node.js 4.0 or later.**
@@ -77,4 +79,5 @@ server.get('/person/:id', (req, res, next) => {
 MIT
 
 [datumo]: https://github.com/vsimonian/datumo
+[docs]: http://datumo-scopes.readthedocs.org/en/latest/
 [docs-about]: http://datumo-scopes.readthedocs.org/en/latest/about.html
